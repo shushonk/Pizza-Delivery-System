@@ -211,20 +211,7 @@ We love contributions! Here's how you can help:
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## 🏆 Awards & Recognition
 
-- 🥇 **Best UI/UX Design** - Pizza Tech Awards 2024
-- 🥈 **Most Innovative Features** - Food Delivery Summit 2024
-- ⭐ **4.8/5 Customer Rating** - Based on 10,000+ orders
-
-## 📞 Support
-
-Having trouble? We're here to help!
-
-- **Email**: support@pizzapalace.com
-- **Phone**: +1 (555) 123-PIZZA
-- **Live Chat**: Available on website
-- **Documentation**: [docs.pizzapalace.com](https://docs.pizzapalace.com)
 
 ## 🎯 Roadmap
 
