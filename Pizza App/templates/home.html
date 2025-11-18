@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-bg text-white py-24">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-6xl md:text-7xl font-bold mb-6">
+            DELICIOUS <span class="text-yellow-400 floating">PIZZA</span>
+        </h1>
+        <p class="text-2xl mb-8 max-w-2xl mx-auto">Fresh, hot, and made with love. Delivered in 30 minutes or free!</p>
+        
+        <!-- Location & Search -->
+        <div class="max-w-2xl mx-auto mb-8">
+            <div class="search-container rounded-2xl p-2">
+                <div class="flex items-center bg-white rounded-xl px-6 py-4">
+                    <i class="fas fa-map-marker-alt text-red-600 mr-4 text-xl"></i>
+                    <input type="text" placeholder="Enter your delivery address..." class="flex-1 outline-none text-gray-800 text-lg">
+                    <button class="bg-red-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-red-700 transition-colors">
+                        <i class="fas fa-bolt mr-2"></i>Detect
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'menu' %}" class="bg-yellow-400 text-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-2xl flex items-center space-x-2">
+                <span>🍕</span>
+                <span>ORDER NOW</span>
+            </a>
+            <a href="{% url 'deals' %}" class="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-red-600 transition-all flex items-center space-x-2">
+                <span>🔥</span>
+                <span>VIEW DEALS</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="p-6">
+                <div class="text-4xl text-red-600 mb-2">⏱️</div>
+                <div class="text-2xl font-bold text-gray-800">30 min</div>
+                <div class="text-gray-600">Fast Delivery</div>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl text-red-600 mb-2">🍕</div>
+                <div class="text-2xl font-bold text-gray-800">50+</div>
+                <div class="text-gray-600">Pizza Varieties</div>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl text-red-600 mb-2">⭐</div>
+                <div class="text-2xl font-bold text-gray-800">4.8/5</div>
+                <div class="text-gray-600">Customer Rating</div>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl text-red-600 mb-2">🚚</div>
+                <div class="text-2xl font-bold text-gray-800">Free</div>
+                <div class="text-gray-600">Over $25</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Famous Pizzas Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-5xl font-bold text-center text-gray-800 mb-4">🌟 CUSTOMER FAVORITES</h2>
+        <p class="text-xl text-center text-gray-600 mb-12 max-w-2xl mx-auto">The pizzas our customers can't get enough of!</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Famous Pizza 1 -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400&h=300&fit=crop" alt="Pepperoni Feast" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        #1 Best Seller
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Pepperoni Feast</h3>
+                    <p class="text-gray-600 mb-4">Double pepperoni, extra cheese, signature sauce</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-red-600">$12.99</span>
+                        <button onclick="addToCart('1', 'Pepperoni Feast', 12.99, 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400')" 
+                                class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Famous Pizza 2 -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop" alt="BBQ Chicken" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        #2 Trending
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">BBQ Chicken Supreme</h3>
+                    <p class="text-gray-600 mb-4">Grilled chicken, BBQ sauce, red onions</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-red-600">$14.99</span>
+                        <button onclick="addToCart('2', 'BBQ Chicken Supreme', 14.99, 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400')" 
+                                class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Famous Pizza 3 -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400&h=300&fit=crop" alt="Veggie Supreme" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        Veg Favorite
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Veggie Supreme</h3>
+                    <p class="text-gray-600 mb-4">Bell peppers, mushrooms, onions, olives</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-red-600">$11.99</span>
+                        <button onclick="addToCart('3', 'Veggie Supreme', 11.99, 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400')" 
+                                class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Famous Pizza 4 -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card">
+                <div class="relative">
+                    <img src="https://www.bacinos.com/wp-content/uploads/2021/05/27-Meat-Lovers-Pizza-Recipes.jpg" alt="Meat Lovers" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        Meat Lover's Choice
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Meat Lovers</h3>
+                    <p class="text-gray-600 mb-4">Pepperoni, sausage, ham, bacon, beef</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-red-600">$16.99</span>
+                        <button onclick="addToCart('4', 'Meat Lovers', 16.99, 'https://images.unsplash.com/photo-1627626775846-122c4c484e32?w=400')" 
+                                class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{% url 'menu' %}" class="bg-gray-800 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-900 transition-colors">
+                View All 50+ Pizzas 🍕
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Special Offers Banner -->
+<section class="bg-gradient-to-r from-red-600 to-orange-500 py-16">
+    <div class="container mx-auto px-4 text-center text-white">
+        <h2 class="text-4xl font-bold mb-6">🎁 LIMITED TIME OFFERS!</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">Don't miss out on these amazing deals. Order now and save big!</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div class="bg-white text-red-600 p-6 rounded-2xl shadow-2xl deal-card">
+                <div class="text-3xl mb-4">🔥</div>
+                <h3 class="text-2xl font-bold mb-2">FLAT 50% OFF</h3>
+                <p class="mb-4">On your first order</p>
+                <div class="bg-red-600 text-white py-2 rounded-lg font-bold">WELCOME50</div>
+            </div>
+            
+            <div class="bg-white text-red-600 p-6 rounded-2xl shadow-2xl deal-card">
+                <div class="text-3xl mb-4">🍕🍕</div>
+                <h3 class="text-2xl font-bold mb-2">BUY 1 GET 1</h3>
+                <p class="mb-4">Free medium pizza</p>
+                <div class="bg-red-600 text-white py-2 rounded-lg font-bold">BOGO2024</div>
+            </div>
+            
+            <div class="bg-white text-red-600 p-6 rounded-2xl shadow-2xl deal-card">
+                <div class="text-3xl mb-4">🚚</div>
+                <h3 class="text-2xl font-bold mb-2">FREE DELIVERY</h3>
+                <p class="mb-4">On orders above $25</p>
+                <div class="bg-red-600 text-white py-2 rounded-lg font-bold">FREESHIP</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

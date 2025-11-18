@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-5xl font-bold text-center text-gray-800 mb-4">🔥 SPECIAL PIZZA OFFERS</h1>
+    <p class="text-xl text-center text-gray-600 mb-12 max-w-2xl mx-auto">Exclusive deals on your favorite pizzas. Limited time only!</p>
+    
+    <!-- Pizza Offers -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- Pizza Offer 1 -->
+        <div class="bg-gradient-to-br from-red-500 to-orange-400 text-white rounded-2xl p-8 text-center shadow-2xl deal-card">
+            <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=300&h=200&fit=crop" alt="Pepperoni Feast" class="w-full h-32 object-cover rounded-lg mb-4">
+            <h3 class="text-2xl font-bold mb-2">Pepperoni Feast</h3>
+            <div class="text-4xl font-bold mb-2">$9.99</div>
+            <div class="text-lg opacity-90 mb-4">Was <span class="line-through">$12.99</span></div>
+            <p class="text-sm opacity-80 mb-4">Double pepperoni, extra cheese</p>
+            <button onclick="addToCart('1', 'Pepperoni Feast Deal', 9.99, 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400')" 
+                    class="bg-white text-red-600 w-full py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                Add Deal to Cart
+            </button>
+        </div>
+
+        <!-- Pizza Offer 2 -->
+        <div class="bg-gradient-to-br from-green-500 to-blue-400 text-white rounded-2xl p-8 text-center shadow-2xl deal-card">
+            <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=300&h=200&fit=crop" alt="Veggie Supreme" class="w-full h-32 object-cover rounded-lg mb-4">
+            <h3 class="text-2xl font-bold mb-2">Veggie Supreme</h3>
+            <div class="text-4xl font-bold mb-2">$8.99</div>
+            <div class="text-lg opacity-90 mb-4">Was <span class="line-through">$11.99</span></div>
+            <p class="text-sm opacity-80 mb-4">Fresh vegetables, premium cheese</p>
+            <button onclick="addToCart('3', 'Veggie Supreme Deal', 8.99, 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400')" 
+                    class="bg-white text-green-600 w-full py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                Add Deal to Cart
+            </button>
+        </div>
+
+        <!-- Pizza Offer 3 -->
+        <div class="bg-gradient-to-br from-purple-500 to-pink-400 text-white rounded-2xl p-8 text-center shadow-2xl deal-card">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=300&h=200&fit=crop" alt="BBQ Chicken" class="w-full h-32 object-cover rounded-lg mb-4">
+            <h3 class="text-2xl font-bold mb-2">BBQ Chicken</h3>
+            <div class="text-4xl font-bold mb-2">$11.99</div>
+            <div class="text-lg opacity-90 mb-4">Was <span class="line-through">$14.99</span></div>
+            <p class="text-sm opacity-80 mb-4">Grilled chicken, BBQ sauce</p>
+            <button onclick="addToCart('2', 'BBQ Chicken Deal', 11.99, 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400')" 
+                    class="bg-white text-purple-600 w-full py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                Add Deal to Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Pizza Combos -->
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">🍕 PIZZA COMBOS</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Combo 1 -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="text-2xl font-bold">Family Feast Combo</h3>
+                <span class="bg-red-600 text-white px-4 py-2 rounded-full font-bold">SAVE $12</span>
+            </div>
+            <p class="text-gray-600 mb-6">2 Large Pizzas + 2 Sides + 2 Drinks + 1 Dessert</p>
+            <div class="flex justify-between items-center">
+                <div>
+                    <span class="text-3xl font-bold text-red-600">$34.99</span>
+                    <span class="text-gray-400 line-through text-xl ml-2">$46.99</span>
+                </div>
+                <button onclick="addComboToCart('family-feast')" class="bg-red-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-red-700 transition-colors">
+                    Add Combo
+                </button>
+            </div>
+        </div>
+
+        <!-- Combo 2 -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="text-2xl font-bold">Weekend Special</h3>
+                <span class="bg-red-600 text-white px-4 py-2 rounded-full font-bold">SAVE $8</span>
+            </div>
+            <p class="text-gray-600 mb-6">1 Large Pizza + 1 Side + 1 Drink + Garlic Bread</p>
+            <div class="flex justify-between items-center">
+                <div>
+                    <span class="text-3xl font-bold text-red-600">$22.99</span>
+                    <span class="text-gray-400 line-through text-xl ml-2">$30.99</span>
+                </div>
+                <button onclick="addComboToCart('weekend-special')" class="bg-red-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-red-700 transition-colors">
+                    Add Combo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function addComboToCart(comboType) {
+    showNotification('🎉 Combo added to cart!');
+}
+</script>
+{% endblock %}

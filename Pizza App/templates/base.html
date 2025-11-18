@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PizzaPalace - Order Delicious Pizza Online{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+        .pizza-card {
+            transition: all 0.3s ease;
+        }
+        .pizza-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFC72C, #E31837);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        .search-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.1);
+        }
+        .deal-card {
+            transition: all 0.3s ease;
+        }
+        .deal-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo -->
+                <a href="{% url 'home' %}" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-red-600 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-white font-bold text-xl">🍕</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">PizzaPalace</span>
+                </a>
+
+                <!-- Navigation -->
+                <nav class="flex items-center space-x-6">
+                    <a href="{% url 'home' %}" class="text-gray-700 hover:text-red-600 font-semibold">Home</a>
+                    <a href="{% url 'menu' %}" class="text-gray-700 hover:text-red-600 font-semibold">Menu</a>
+                    <a href="{% url 'deals' %}" class="text-gray-700 hover:text-red-600 font-semibold">Deals</a>
+                    <a href="{% url 'cart' %}" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 flex items-center space-x-2">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Cart</span>
+                        <span id="cart-count" class="bg-yellow-400 text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">0</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 text-center">
+        <p>&copy; 2024 PizzaPalace. Fresh pizza delivered fast!</p>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('pizza_cart')) || [];
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+        
+        function addToCart(pizzaId, pizzaName, pizzaPrice, pizzaImage) {
+            const existingItem = cart.find(item => item.id === pizzaId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: pizzaId,
+                    name: pizzaName,
+                    price: pizzaPrice,
+                    image: pizzaImage,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('pizza_cart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification('🍕 Added to cart!');
+        }
+        
+        function showNotification(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-bold text-gray-800 mb-4">OUR DELICIOUS MENU</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Handcrafted pizzas made with the finest ingredients and baked to perfection in our stone-fired ovens</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-4 justify-center mb-8">
+        <button class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold">All Pizzas</button>
+        <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-semibold hover:bg-gray-300">Vegetarian</button>
+        <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-semibold hover:bg-gray-300">Non-Veg</button>
+        <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-semibold hover:bg-gray-300">Spicy</button>
+        <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-semibold hover:bg-gray-300">Specialty</button>
+    </div>
+
+    <!-- Pizza Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <!-- Pizza 1 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400&h=300&fit=crop" alt="Pepperoni Feast" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                    <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">🌶️ Spicy</span>
+                    <span class="bg-gray-800 text-white px-3 py-1 rounded-full text-sm font-bold">🔥 Popular</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">Pepperoni Feast</h3>
+                    <span class="text-2xl font-bold text-red-600">$12.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Double pepperoni, extra mozzarella cheese, and our signature tomato sauce on a thick crust</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.8</span>
+                        <span>•</span>
+                        <span>🕒 15 min</span>
+                    </div>
+                    <button onclick="addToCart('1', 'Pepperoni Feast', 12.99, 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza 2 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400&h=300&fit=crop" alt="Margherita Classic" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">🌱 Vegetarian</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">Margherita Classic</h3>
+                    <span class="text-2xl font-bold text-red-600">$10.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Fresh San Marzano tomatoes, buffalo mozzarella, basil leaves, and extra virgin olive oil</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.9</span>
+                        <span>•</span>
+                        <span>🕒 12 min</span>
+                    </div>
+                    <button onclick="addToCart('2', 'Margherita Classic', 10.99, 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza 3 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=300&fit=crop" alt="BBQ Chicken" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍗 Chicken</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">BBQ Chicken Supreme</h3>
+                    <span class="text-2xl font-bold text-red-600">$14.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Grilled chicken, smoky BBQ sauce, red onions, cilantro, and mozzarella on thin crust</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.7</span>
+                        <span>•</span>
+                        <span>🕒 18 min</span>
+                    </div>
+                    <button onclick="addToCart('3', 'BBQ Chicken Supreme', 14.99, 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza 4 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?w=400&h=300&fit=crop" alt="Hawaiian" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">🍍 Tropical</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">Hawaiian Paradise</h3>
+                    <span class="text-2xl font-bold text-red-600">$13.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Ham, pineapple, mozzarella, and our special sweet and sour sauce on regular crust</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.6</span>
+                        <span>•</span>
+                        <span>🕒 16 min</span>
+                    </div>
+                    <button onclick="addToCart('4', 'Hawaiian Paradise', 13.99, 'https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza 5 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400&h=300&fit=crop" alt="Veggie Supreme" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">🌱 Vegetarian</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">Veggie Supreme</h3>
+                    <span class="text-2xl font-bold text-red-600">$11.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Bell peppers, mushrooms, onions, black olives, tomatoes, and extra cheese on whole wheat crust</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.8</span>
+                        <span>•</span>
+                        <span>🕒 14 min</span>
+                    </div>
+                    <button onclick="addToCart('5', 'Veggie Supreme', 11.99, 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza 6 - Meat Lovers (FIXED IMAGE) -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://www.bacinos.com/wp-content/uploads/2021/05/27-Meat-Lovers-Pizza-Recipes.jpg">
+                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                    <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">🌶️ Spicy</span>
+                    <span class="bg-gray-800 text-white px-3 py-1 rounded-full text-sm font-bold">🍖 Meat</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">Meat Lovers</h3>
+                    <span class="text-2xl font-bold text-red-600">$16.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Pepperoni, Italian sausage, ham, bacon, and ground beef with extra cheese on thick crust</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.9</span>
+                        <span>•</span>
+                        <span>🕒 20 min</span>
+                    </div>
+                    <button onclick="addToCart('6', 'Meat Lovers', 16.99, 'https://images.unsplash.com/photo-1627626775846-122c4c484e32?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza 7 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&h=300&fit=crop" alt="Four Cheese" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute top-4 right-4">
+                    <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">🧀 Cheesy</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">Four Cheese Delight</h3>
+                    <span class="text-2xl font-bold text-red-600">$12.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Mozzarella, parmesan, gorgonzola, and ricotta cheeses with garlic and herbs on thin crust</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.7</span>
+                        <span>•</span>
+                        <span>🕒 13 min</span>
+                    </div>
+                    <button onclick="addToCart('7', 'Four Cheese Delight', 12.99, 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza 8 -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden pizza-card group">
+            <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=300&fit=crop" alt="Spicy Mexican" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute top-4 right-4 flex flex-col gap-2">
+                    <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">🌶️ Spicy</span>
+                    <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">🇲🇽 Mexican</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-xl font-bold text-gray-800">Spicy Mexican</h3>
+                    <span class="text-2xl font-bold text-red-600">$14.99</span>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed">Spicy chorizo, jalapeños, bell peppers, onions, and our special Mexican sauce</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ 4.8</span>
+                        <span>•</span>
+                        <span>🕒 17 min</span>
+                    </div>
+                    <button onclick="addToCart('8', 'Spicy Mexican', 14.99, 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400')" 
+                            class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors transform hover:scale-105 shadow-lg">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more pizzas following the same pattern... -->
+        <!-- You can copy the above blocks and change the details for pizzas 9-20 -->
+
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+        <button class="bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-900 transition-colors">
+            Load More Pizzas
+        </button>
+    </div>
+</div>
+
+<!-- Customization Modal -->
+<div id="customize-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="p-8">
+                <h3 class="text-3xl font-bold mb-6 text-center">Customize Your Pizza</h3>
+                
+                <!-- Customization options would go here -->
+                
+                <div class="flex justify-end space-x-4 mt-8">
+                    <button onclick="closeCustomizeModal()" class="px-6 py-3 border-2 border-gray-300 rounded-lg font-semibold hover:bg-gray-50">Cancel</button>
+                    <button onclick="addCustomizedPizza()" class="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700">Add to Cart - $12.99</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openCustomizeModal(pizzaId) {
+    document.getElementById('customize-modal').classList.remove('hidden');
+}
+
+function closeCustomizeModal() {
+    document.getElementById('customize-modal').classList.add('hidden');
+}
+
+function addCustomizedPizza() {
+    alert('Customized pizza added to cart!');
+    closeCustomizeModal();
+}
+</script>
+{% endblock %}

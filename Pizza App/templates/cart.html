@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8">Your Cart</h1>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Cart Items -->
+        <div class="lg:col-span-2">
+            <div id="cart-items" class="bg-white rounded-lg shadow-md p-6">
+                <!-- Cart items loaded by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Delivery & Checkout -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-4">Delivery Details</h3>
+            
+            <!-- Delivery Date Selection -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Delivery Date & Time</label>
+                <input type="datetime-local" id="delivery-time" class="w-full border rounded px-3 py-2">
+            </div>
+            
+            <!-- Address -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Delivery Address</label>
+                <textarea id="delivery-address" class="w-full border rounded px-3 py-2" placeholder="Enter your address"></textarea>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="border-t pt-4">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span>Delivery:</span>
+                    <span id="delivery-fee">$2.99</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+            </div>
+            
+            <!-- Payment Methods -->
+            <div class="mt-4">
+                <h4 class="font-semibold mb-2">Payment Method</h4>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="radio" name="payment" value="card" checked class="mr-2">
+                        Credit/Debit Card
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="payment" value="paypal" class="mr-2">
+                        PayPal
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="payment" value="cash" class="mr-2">
+                        Cash on Delivery
+                    </label>
+                </div>
+            </div>
+            
+            <button onclick="checkout()" class="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 mt-4">
+                PLACE ORDER
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+function loadCart() {
+    const cart = JSON.parse(localStorage.getItem('pizza_cart')) || [];
+    let html = '';
+    let subtotal = 0;
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        
+        html += `
+            <div class="flex items-center justify-between py-4 border-b">
+                <div class="flex items-center space-x-4">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                    <div>
+                        <h4 class="font-semibold">${item.name}</h4>
+                        <p class="text-red-600">$${item.price}</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="updateQuantity('${item.id}', ${item.quantity - 1})" class="px-2 py-1 border rounded">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="updateQuantity('${item.id}', ${item.quantity + 1})" class="px-2 py-1 border rounded">+</button>
+                    <button onclick="removeFromCart('${item.id}')" class="text-red-600 ml-4">Remove</button>
+                </div>
+            </div>
+        `;
+    });
+    
+    document.getElementById('cart-items').innerHTML = html || '<p class="text-center py-8">Your cart is empty</p>';
+    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+    
+    const deliveryFee = subtotal > 25 ? 0 : 2.99;
+    document.getElementById('delivery-fee').textContent = deliveryFee === 0 ? 'FREE' : `$${deliveryFee.toFixed(2)}`;
+    
+    const total = subtotal + deliveryFee;
+    document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+}
+
+function checkout() {
+    const deliveryTime = document.getElementById('delivery-time').value;
+    const address = document.getElementById('delivery-address').value;
+    
+    if (!deliveryTime || !address) {
+        alert('Please select delivery time and enter address');
+        return;
+    }
+    
+    const deliveryDate = new Date(deliveryTime);
+    alert(`Order placed! Your pizza will be delivered on ${deliveryDate.toLocaleString()}`);
+    
+    // Clear cart
+    localStorage.removeItem('pizza_cart');
+    loadCart();
+    updateCartCount();
+}
+
+// Load cart when page opens
+document.addEventListener('DOMContentLoaded', loadCart);
+</script>
+{% endblock %}

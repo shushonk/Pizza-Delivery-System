@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-6xl">
+    <h1 class="text-4xl font-bold mb-8">Checkout</h1>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Order Summary -->
+        <div class="lg:col-span-2">
+            <!-- Delivery/Pickup Options -->
+            <!-- Address Selection -->
+            <!-- Payment Methods -->
+        </div>
+
+        <!-- Order Total -->
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-lg shadow-lg p-6 sticky top-4">
+                <h3 class="text-xl font-bold mb-4">Order Summary</h3>
+                <!-- Order details would go here -->
+                <button class="w-full bg-red-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-red-700">
+                    PLACE ORDER
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

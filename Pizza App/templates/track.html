@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">📍 TRACK YOUR ORDER</h1>
+    
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
+        <!-- Order Lookup -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Enter Order Details</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Order Number</label>
+                    <input type="text" id="order-number" placeholder="e.g., ORD123456" class="w-full border rounded-lg px-4 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="order-email" placeholder="your@email.com" class="w-full border rounded-lg px-4 py-2">
+                </div>
+                <button onclick="trackOrder()" class="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700">
+                    TRACK ORDER
+                </button>
+            </div>
+        </div>
+
+        <!-- Order Status Display -->
+        <div id="order-status" class="hidden">
+            <h2 class="text-2xl font-bold mb-4">Order Status</h2>
+            <div class="space-y-4">
+                <!-- Order Progress -->
+                <div class="flex justify-between items-center mb-6">
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white mx-auto mb-2">✓</div>
+                        <span class="text-sm">Ordered</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white mx-auto mb-2">✓</div>
+                        <span class="text-sm">Preparing</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white mx-auto mb-2">⏳</div>
+                        <span class="text-sm">Baking</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-white mx-auto mb-2">4</div>
+                        <span class="text-sm">On Way</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-white mx-auto mb-2">5</div>
+                        <span class="text-sm">Delivered</span>
+                    </div>
+                </div>
+
+                <!-- Delivery Info -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-semibold mb-2">Delivery Information</h3>
+                    <p><strong>Estimated Delivery:</strong> 7:30 PM (15-20 mins)</p>
+                    <p><strong>Delivery Person:</strong> John Doe</p>
+                    <p><strong>Vehicle:</strong> Motorcycle #PZ-123</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function trackOrder() {
+    const orderNumber = document.getElementById('order-number').value;
+    const email = document.getElementById('order-email').value;
+    
+    if (orderNumber && email) {
+        document.getElementById('order-status').classList.remove('hidden');
+        // Simulate API call to get order status
+    } else {
+        alert('Please enter both order number and email');
+    }
+}
+</script>
+{% endblock %}
