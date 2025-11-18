@@ -213,15 +213,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 
 
-## 🎯 Roadmap
-
-- [ ] **Mobile App** (iOS & Android)
-- [ ] **AI Recommendations** based on order history
-- [ ] **Voice Ordering** with virtual assistant
-- [ ] **Augmented Reality** pizza preview
-- [ ] **Loyalty Program** with points system
-- [ ] **Group Ordering** for parties and events
-
 ---
 
 <div align="center">
@@ -230,8 +221,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 *"Delivering happiness, one pizza at a time!"* 🚀
 
-[![Website](https://img.shields.io/badge/Website-PizzaPalace-red)](https://pizzapalace.com)
-[![Twitter](https://img.shields.io/badge/Twitter-@PizzaPalace-blue)](https://twitter.com/PizzaPalace)
-[![Instagram](https://img.shields.io/badge/Instagram-@PizzaPalace-orange)](https://instagram.com/PizzaPalace)
 
 </div>
